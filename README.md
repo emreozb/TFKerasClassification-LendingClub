@@ -14,47 +14,27 @@ The "loan_status" column contains our label.
 
 **Goal is here to have an understanding for which variables are important, view summary statistics, and visualize the data.**
 
-**Count plot - Loan Status**
+**Count plot - Loan Status:** A count plot can be thought of as a histogram across a categorical, instead of quantitative, variable. As we see in the count plot graph, our label column is imbalanced. It will definitely affect accuracy of our model’s predictions on ‘Charged Off’ loans.
 
-A count plot can be thought of as a histogram across a categorical, instead of quantitative, variable. As we see in the count plot graph, our label column is imbalanced. It will definitely affect accuracy of our model’s predictions on ‘Charged Off’ loans.
+**Distribution plot - Loan Amount:** First thing we noticed in a distplot graph is that spikes happens at the even money amounts.
 
-**Distribution plot - Loan Amount**
+**Heatmap - Correlation:** This is our heat map. We can see various relationships between the features. There is almost perfect correlation between "loan_amnt" and "installment" features. I will explore these features further to understand whether this relationship makes sense or not.
 
-First thing we noticed in a distplot graph is that spikes happens at the even money amounts.
+**Scatter plot - Installment vs Loan Amount:** It pretty much makes sense that the installments and the actual loan amount would be extremely correlated. If you loan someone out one million dollars, you would expect that following some formula your monthly payment installments are going to be quite high. We can easily see in the scatter plot that there is a strong positive linear relationship between these variables.
 
-**Heatmap - Correlation**
+**Box plot - Loan Status vs Loan Amount:** A box plot shows the relationship between the loan status and the loan amount. In general, it looks like they are pretty similar. If our loan amount is higher, we have a slight increase in the likelihood of it being charged off. It is harder to pay back larger loans than smaller loans. But they’re extremely similar in the plot so this is not a key indicator of whether or not someone is going to pay off their loan.
 
-This is our heat map. We can see various relationships between the features. There is almost perfect correlation between "loan_amnt" and "installment" features. I will explore these features further to understand whether this relationship makes sense or not.
+**Count plot - Grade and Subgrade:** I explored the Grade and SubGrade columns to understand what the unique possible grades and subgrades. I visualized it using count plots. This is showing the percentage of charged off loans. It looks like it’s increasing as the letter grade gets lower. Best borrowers are given a grade of A. Giving loans to the people with lower grades is clearly the riskier than giving loans to the people with higher grades.
 
-**Scatter plot - Installment vs Loan Amount**
+**Count plot - Only G and F grades:** I zoomed in on the little section of the plot that shows G and F subgrades to investigate if it’s worth to give loans to the people with subgrades of G and F. It looks like F and G subgrades don't get paid back that often. I will isolate those and recreate the countplot just for those subgrades. We notice that if somebody is graded G5, the likelihood of fully paying off their loan is almost as same as being charged off on the loan.
 
-It pretty much makes sense that the installments and the actual loan amount would be extremely correlated. If you loan someone out one million dollars, you would expect that following some formula your monthly payment installments are going to be quite high. We can easily see in the scatter plot that there is a strong positive linear relationship between these variables.
-
-**Box plot - Loan Status vs Loan Amount**
-
-A box plot shows the relationship between the loan status and the loan amount. In general, it looks like they are pretty similar. If our loan amount is higher, we have a slight increase in the likelihood of it being charged off. It is harder to pay back larger loans than smaller loans. But they’re extremely similar in the plot so this is not a key indicator of whether or not someone is going to pay off their loan.
-
-**Count plot - Grade and Subgrade**
-
-I explored the Grade and SubGrade columns to understand what the unique possible grades and subgrades. I visualized it using count plots.
-
-This is showing the percentage of charged off loans. It looks like it’s increasing as the letter grade gets lower. Best borrowers are given a grade of A. Giving loans to the people with lower grades is clearly the riskier than giving loans to the people with higher grades.
-
-**Count plot - Only G and F grades**
-
-I zoomed in on the little section of the plot that shows G and F subgrades to investigate if it’s worth to give loans to the people with subgrades of G and F.
-
-It looks like F and G subgrades don't get paid back that often. I will isolate those and recreate the countplot just for those subgrades. We notice that if somebody is graded G5, the likelihood of fully paying off their loan is almost as same as being charged off on the loan.
-
-**Bar plot correlation between loan status and other numerical variables**
-
-I created a new column and named this as loan_repaid. I encoded the categorical values in our response variable (label column) using map() function and put these numeric values into newly created column (loan_repaid). After I created loan_repaid column, we used this column to create a bar plot showing the correlation of the numeric features to the new loan_repaid column.
+**Bar plot correlation between loan status and other numerical variables:** I created a new column and named this as loan_repaid. I encoded the categorical values in our response variable (label column) using map() function and put these numeric values into newly created column (loan_repaid). After I created loan_repaid column, we used this column to create a bar plot showing the correlation of the numeric features to the new loan_repaid column.
 
 We can see that interest rate has the highest (negative) correlation with whether or not someone’s going to repay their loan. If somebody has a extremely high interest rate, they are going to find it harder to pay off that loan.
 
 # Section 2: Data PreProcessing
 
-Goal is here to remove or fill any missing data and remove unnecessary or repetitive features. Also, I will convert categorical string features to dummy variables.
+**Goal is here to remove or fill any missing data and remove unnecessary or repetitive features. Also, I will convert categorical string features to dummy variables.**
 
 ## Missing Data
 
@@ -66,9 +46,7 @@ I created a count plot of the emp_length feature column. I plotted out the count
 
 This still didn’t really inform us if there is a strong relationship between employment length and being charged off. I wanted to see the percentage of charge offs per category. It essentially informs us what percent of people per employment category didn’t pay back their loan.
 
-**Bar plot - Percentage of Charged Off vs Fully Paid (Employment Length)**
-
-All the bars are almost the same height in the bar plot. There is not that much information or differentiation between employment lengths. I noticed that Charge Off rates are extremely similar across all employment lengths so I dropped the emp_length column.
+**Bar plot - Percentage of Charged Off vs Fully Paid (Employment Length):** All the bars are almost the same height in the bar plot. There is not that much information or differentiation between employment lengths. I noticed that Charge Off rates are extremely similar across all employment lengths so I dropped the emp_length column.
 
 I reviewed the title column vs the purpose column to see if this was repeated information. After I checked the entries in both column, I noticed that both column has basically same information so it makes sense to just drop the title column.
 
