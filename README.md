@@ -1,12 +1,16 @@
-# TFKerasClassification-LendingClub
-built a model that can predict whether or not a borrower will pay back their loan
+# TFKerasClassification - LendingClub
 
-The Data
+## The Data
+
 LendingClub is a US peer-to-peer lending company, headquartered in San Francisco, California. It was the first peer-to-peer lender to register its offerings as securities with the Securities and Exchange Commission (SEC), and to offer loan trading on a secondary market. LendingClub is the world's largest peer-to-peer lending platform.
 
-Our Goal
-I have historical data on loans given out with information on whether or not the borrower defaulted (charge off). My data consists of 396,030 entries. I'll build a model that can predict whether or not a borrower will pay back their loan. This way in the future when I get a new potential customer we can assess whether or not they are likely to pay back the loan. The "loan_status" column contains our label.
+### Our Goal
 
+I have historical data on loans given out with information on whether or not the borrower defaulted (charge off). I'll build a model that can predict whether or not a borrower will pay back their loan. This way in the future when I get a new potential customer I can assess whether or not they are likely to pay back the loan.
+
+The "loan_status" column contains our label.
+
+### Data Overview
 Section 1: Exploratory Data Analysis (EDA)
 Goal is here to have an understanding for which variables are important, view summary statistics, and visualize the data.
 
